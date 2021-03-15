@@ -1,9 +1,10 @@
 <ul class="list-group">
     <li id="color" class="list-group-item"><b>Renkler</b></li>
-    <li 
+    <li (click)="setCurrentColor(color)"
     *ngFor="let color of colors" 
-    class="list-group-item list-group-item-action">
+    [class]="getCurrentColorClass(color)">
       {{color.colorName}}
     </li>
    </ul>
    
+   <h5 *ngIf="currentColor">{{currentColor.colorName}} seçtiniz.</h5>
