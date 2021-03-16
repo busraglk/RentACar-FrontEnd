@@ -14,6 +14,5 @@ export class ColorService {
 
   getColors(): Observable<ListResponseModel<Color>> {
     return this.httpClient.get<ListResponseModel<Color>>(this.apiUrl);
-
   }
 }
