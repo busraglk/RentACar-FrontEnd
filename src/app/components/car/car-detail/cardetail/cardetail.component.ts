@@ -14,7 +14,6 @@ export class CardetailComponent implements OnInit {
 
   cars:Car[] = [];
   images:CarImage[] = [];
-  ImagePaths: string[] = [];
   imageUrl = 'https://localhost:44348/';
 
   constructor(private carService: CarService,  
@@ -44,10 +43,6 @@ export class CardetailComponent implements OnInit {
 
     })
      
-  }
-
-  getBack(){
-    this.carService.getCars();
   }
 
   getSliderClassName(index:Number){
