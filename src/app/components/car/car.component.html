@@ -9,7 +9,6 @@ class="spinner-border text-secondary" role="status">
 <table *ngIf="dataLoaded==true" class="table table-hover">
     <thead>
         <tr>
-            <th>Id</th>
             <th>Marka</th>
             <th>Renk</th>
             <th>Araba Modeli</th>
@@ -18,13 +17,16 @@ class="spinner-border text-secondary" role="status">
         </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let car of cars">
-        <td>{{car.id}}</td>
+    <tr *ngFor="let car of cars"
+    (click)="setCurrentCar(car)"
+    routerLink = "/cars/details/{{car.id}}"
+    [class]="getCarClass(car)">
         <td>{{car.brandName}}</td>
         <td>{{car.colorName}}</td>
         <td>{{car.modelYear}}</td>
         <td>{{car.dailyPrice}}₺</td>
         <td>{{car.description}}</td>
+        <td><button type="button" class="btn btn-outline-success ms-3">İncele</button></td>
     </tr>
 </tbody> 
 </table>

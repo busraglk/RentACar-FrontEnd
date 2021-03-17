@@ -2,4 +2,11 @@
     background-color: teal;
     font-size: medium;
     color: white;
+
+}
+#all{
+    background-color: teal;
+    color: white;
+    font-size: medium;
+    font-weight: bold;
 }

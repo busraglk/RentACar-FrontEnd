@@ -1,0 +1,51 @@
+<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="..." class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="..." class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="..." class="d-block w-100" alt="...">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"  data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"  data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+        <table class="table">
+          <thead>
+            <tr>
+              <th style="color:darkslategrey">Marka</th>
+              <th style="color:darkslategrey">Renk</th>
+              <th style="color:darkslategrey">Araba Modeli</th>
+              <th style="color:darkslategrey">Günlük Fiyat</th>
+              <th style="color:darkslategrey">Açıklama</th>
+              </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let car of cars">
+              <td>{{ car.brandName }}</td> 
+              <td>{{ car.colorName}}</td>
+              <td>{{ car.modelYear }}</td>
+              <td>{{ car.dailyPrice }}</td>
+              <td>{{ car.description }}</td>
+          </tbody>
+        </table>
+        <button
+        routerLink="/cars"
+        (click)="getBack()"
+        type="button"
+        aria-current="true"
+        class="btn btn-outline-success ms-3 float-end"
+        >
+        Geri
+        </button> 
+
+
