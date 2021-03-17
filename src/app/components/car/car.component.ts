@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Car } from 'src/app/models/car';
-import { CarImage } from 'src/app/models/carImage';
 import { CarService } from 'src/app/services/car.service';
 
 @Component({
@@ -14,6 +13,7 @@ export class CarComponent implements OnInit {
   cars: Car[] = [];
   currentCar:Car;
   dataLoaded = false;
+  imageUrl = 'https://localhost:44348/';
 
   constructor(private carService: CarService, 
     private activatedRoute: ActivatedRoute) { }
@@ -52,18 +52,6 @@ export class CarComponent implements OnInit {
       this.cars = response.data
       this.dataLoaded = true;
     });
-  }
-
-  getCarClass(car:Car){
-    if(car == this.currentCar){
-      return "table-info cursorPointer"
-    }else{
-      return "cursorPointer"
-    }
-  }
-
-  setCurrentCar(car:Car){
-    this.currentCar=car;
   }
 
 }

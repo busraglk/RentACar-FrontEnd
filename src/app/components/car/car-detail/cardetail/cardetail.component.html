@@ -1,51 +1,38 @@
-<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img src="..." class="d-block w-100" alt="...">
-      </div>
-      <div class="carousel-item">
-        <img src="..." class="d-block w-100" alt="...">
-      </div>
-      <div class="carousel-item">
-        <img src="..." class="d-block w-100" alt="...">
-      </div>
-    </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"  data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"  data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
+<div class="alert alert-secondary" role="alert">
+  <h4>Araba Bilgisi</h4>
+</div>
+<div class="container">
+<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+<div class="carousel-indicators">
+<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+</div>
+<div class="carousel-inner" >
+<div class="carousel-item active" *ngFor="let car of cars">
+  <img src="{{imageUrl}}/{{car.imagePath}}" class="d-block w-100" alt="..." >
+</div>
+</div>
+<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"  data-bs-slide="prev">
+<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+<span class="visually-hidden">Previous</span>
+</button>
+<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"  data-bs-slide="next">
+<span class="carousel-control-next-icon" aria-hidden="true"></span>
+<span class="visually-hidden">Next</span>
+</button>
+</div>
+</div>
+<br>
+<div class="container">
+  <div class="row row-cols-2" *ngFor="let car of cars">
+    <div class="col" ><h5>Araba Adı: {{car.description}}</h5></div>
+    <div class="col" ><h5>Renk: {{car.colorName}}</h5></div>
+    <br> <br>
+    <div class="col" ><h5>Model Yılı: {{car.modelYear}}</h5></div>
+    <br> <br>
+    <div class="col" ><h5>Günlük Kiralama Fiyatı: {{car.dailyPrice}}</h5></div>
+   
+    
   </div>
-        <table class="table">
-          <thead>
-            <tr>
-              <th style="color:darkslategrey">Marka</th>
-              <th style="color:darkslategrey">Renk</th>
-              <th style="color:darkslategrey">Araba Modeli</th>
-              <th style="color:darkslategrey">Günlük Fiyat</th>
-              <th style="color:darkslategrey">Açıklama</th>
-              </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let car of cars">
-              <td>{{ car.brandName }}</td> 
-              <td>{{ car.colorName}}</td>
-              <td>{{ car.modelYear }}</td>
-              <td>{{ car.dailyPrice }}</td>
-              <td>{{ car.description }}</td>
-          </tbody>
-        </table>
-        <button
-        routerLink="/cars"
-        (click)="getBack()"
-        type="button"
-        aria-current="true"
-        class="btn btn-outline-success ms-3 float-end"
-        >
-        Geri
-        </button> 
-
-
+</div>
