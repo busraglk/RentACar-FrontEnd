@@ -4,7 +4,7 @@
 <div class="row" *ngIf="dataLoaded==true">
  <h3>Araç Listesi</h3>
 <div class="card" *ngFor="let car of cars" style="width: 18rem;" class="border border-dark">
-    <img height="20rem" src="{{imageUrl}}/{{car.imagePath}}" routerLink="/cars/details/{{car.id}}" class="card-img-top" class="img-fluid img-thumbnail">
+    <img width="350px" height="500px" src="{{imageUrl}}/{{car.imagePath[0]}}" routerLink="/cars/details/{{car.id}}" class="card-img-top" class="img-fluid img-thumbnail">
   <div class="card-body">
     <h5 class="card-title">{{car.description}}</h5>
   </div>
