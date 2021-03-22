@@ -3,7 +3,7 @@ class="spinner-border text-secondary" role="status">
     <span class="visually-hidden">Loading...</span>
 </div>
 <div *ngIf="dataLoaded == true" class="rental">
-    Kiralanan Araç Listesi
+    Aracı Kirala
 </div>
 <br>
 
@@ -13,6 +13,7 @@ class="spinner-border text-secondary" role="status">
             <th>Id</th>
             <th>Marka</th>
             <th>Müşteri Adı</th>
+            <th>Günlük Kiralama Fiyatı</th>
             <th>Kiralama Tarihi</th>
             <th>Teslim Tarihi</th>
         </tr>
@@ -22,8 +23,9 @@ class="spinner-border text-secondary" role="status">
         <td>{{rental.id}}</td>
         <td>{{rental.brandName}}</td>
         <td>{{rental.customerName}}</td>
-        <td>{{rental.rentDate}}</td>
-        <td>{{rental.returnDate}}</td>
+        <td>{{rental.dailyPrice | currency:"TRY":"symbol-narrow":"1.2-2"}}</td>
+        <td>{{rental.rentDate | date: 'medium'}}</td>
+        <td>{{rental.returnDate | date: 'medium'}}</td>
     </tr>
 </tbody>
 </table>

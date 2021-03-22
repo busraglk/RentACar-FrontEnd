@@ -1,9 +1,7 @@
 <h5 class="p-3 mb-2 bg-secondary text-white">Araç Bilgisi</h5>
-  
+<div class="container">
 <div class="row">
-
   <div class="col-md-8">
-
 
     <div *ngFor="let car of cars let i=index" id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
       <div class="carousel-inner">
@@ -38,7 +36,7 @@
         <li class="list-group-item">Renk : {{ car.colorName }}</li>
         <li class="list-group-item">Model : {{ car.modelYear }}</li>    
         <li class="list-group-item">
-          Günlük Kiralama Ücreti : {{ car.dailyPrice }} TL
+          Günlük Kiralama Ücreti : {{ car.dailyPrice  | currency: "TRY":"symbol-narrow":"1.2-2"}} 
         </li>
       </ul>
 
@@ -48,3 +46,4 @@
     </div>
   </div>
 </div>
+</div> 

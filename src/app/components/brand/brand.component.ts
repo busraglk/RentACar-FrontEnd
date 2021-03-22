@@ -11,6 +11,7 @@ export class BrandComponent implements OnInit {
 
   brands: Brand[] = [];
   currentBrand: Brand;
+  filterText:string = "";
   dataLoaded = false;
 
 
@@ -31,13 +32,25 @@ export class BrandComponent implements OnInit {
    this.currentBrand = brand;
   }
 
+  removeCurrentBrand(){
+    this.filterText = "";
+    this.currentBrand = {id:-1,brandName:""};
+  }
+
   getCurrentBrandClass(brand: Brand){
     if(brand == this.currentBrand) {
       return "list-group-item active"
     }
     else {
-      return "list-group-item"
+      return "list-group-item cursorPointer"
     }
   }
 
+  getAllBrandClass(){
+    if(!this.currentBrand){
+      return "list-group-item list-group-item-action list-group-item-dark active";
+    }else{
+      return "list-group-item list-group-item-action list-group-item-dark";
+    }
+  }
 }
