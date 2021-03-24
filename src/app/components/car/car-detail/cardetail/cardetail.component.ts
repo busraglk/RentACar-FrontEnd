@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Car } from 'src/app/models/car';
-import { CardetailAndImagesDto } from 'src/app/models/carDetailAndImagesDto';
+//import { CardetailAndImagesDto } from 'src/app/models/carDetailAndImagesDto';
 import { CarImage } from 'src/app/models/carImage';
 import { CarImageService } from 'src/app/services/car-image.service';
 import { CarService } from 'src/app/services/car.service';
@@ -15,7 +15,7 @@ export class CardetailComponent implements OnInit {
   cars : Car[] =[];
   car:Car;
   images:CarImage[] = [];
-  carDetail:CardetailAndImagesDto;
+ 
   imageUrl = 'https://localhost:44348/';
 
   constructor(private carService: CarService,  

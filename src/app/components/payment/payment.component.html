@@ -1,12 +1,12 @@
 <button type="button" class="btn btn-success me-3" data-bs-toggle="modal" data-bs-target="#creditcard">
- Seç 
+ Ödeme Yap 
 </button>
 <!-- Modal -->
 <div class="modal fade" id="creditcard" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="creditcard"> Kirala</h5>
+        <h5 class="modal-title" id="creditcard"> İşlem Özeti</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -14,7 +14,7 @@
           <div class="col">
             <div class="row">
               <label for="customerName">Kart Üzerindeki İsim: </label>
-              <input [(ngModel)] = "customerName" class="form-control" type="text" value="" id="customerName"/>
+              <input [(ngModel)] = "customerName" class="form-control" type="text" value="" id="customerName" />
             </div>
             <div class="row">
               <label for="dailyPrice">Fiyat: </label>
@@ -30,26 +30,13 @@
             </div>
             <div class="row">
               <label for="expirationDate">Son Kullanma Tarihi: </label>
-              <input [(ngModel)] = "expirationDate" class="form-control" type="text"value="" id="expirationDate"/>
+              <input [(ngModel)] = "expirationDate" class="form-control" type="text"value="" id="expirationDate" placeholder="12/2021"/>
             </div>
             <div class="row">
                 <label for="creditCardPassword">Şifre: </label>
-                <input [(ngModel)] = "creditCardPassword" class="form-control" type="text"value="" id="creditCardPassword"/>
+                <input [(ngModel)] = "creditCardPassword" class="form-control"  type="password"value="" id="creditCardPassword"/>
               </div>
           </div>
-          <!-- <div class="form-row">
-               <label for="select-customer"> Bir müşteri seçiniz: </label>
-            <select id="select-customer"
-              class="custom-select"
-              [(ngModel)]="customerId"
-              aria-placeholder="Müşteriler"
-              type="number"
-            >
-              <option *ngFor="let customer of customers" type="number" [value]="customer.id">
-                {{customer.customerName}}
-              </option>
-            </select>
-          </div> -->
 
         </div>
       </div>

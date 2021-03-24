@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+
 import { ToastrService } from 'ngx-toastr';
 import { Car } from 'src/app/models/car';
 import { Customer } from 'src/app/models/customer';
@@ -31,8 +31,6 @@ export class RentalComponent implements OnInit {
   constructor(private rentalService: RentalService,
     private customerService: CustomerService,
     private toastrService: ToastrService,
-    private router:Router,
-    private activatedRoute: ActivatedRoute,
     private carService: CarService) { }
 
   ngOnInit(): void {
@@ -59,9 +57,10 @@ export class RentalComponent implements OnInit {
       carId: this.carForRent.id,
       customerId: this.customerId
     }
-    // this.rentalService. AddRental(newRental).subscribe(response=>{
+    //  this.rentalService. AddRental(newRental).subscribe(response=>{
     //   this.toastrService.info("Ödeme sayfasına yönlendiriliyorsunuz");
-    // })
+    //  })
+
     this.rental = newRental
     this.isAdded=true
     this.toastrService.success("Araç kiralama kaydınız başarıyla oluşturuldu");
