@@ -12,12 +12,11 @@ import { CarService } from 'src/app/services/car.service';
   styleUrls: ['./cardetail.component.css']
 })
 export class CardetailComponent implements OnInit {
-
-  cars:Car[] = [];
+  cars : Car[] =[];
+  car:Car;
   images:CarImage[] = [];
   carDetail:CardetailAndImagesDto;
   imageUrl = 'https://localhost:44348/';
-  isRented:boolean;
 
   constructor(private carService: CarService,  
     private activatedRoute:ActivatedRoute,
@@ -35,7 +34,8 @@ export class CardetailComponent implements OnInit {
   getCarDetails(carId:number)
   {
     this.carService.getCarDetails(carId).subscribe(response => {
-      this.cars = response.data;
+      this.car = response.data[0];
+      this.cars =response.data;
       console.log(response);
     })
   }

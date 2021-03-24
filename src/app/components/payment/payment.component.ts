@@ -4,9 +4,11 @@ import { ToastrService } from 'ngx-toastr';
 import { Car } from 'src/app/models/car';
 import { Customer } from 'src/app/models/customer';
 import { Payment } from 'src/app/models/payment';
+import { Rental } from 'src/app/models/rental';
 import { CarService } from 'src/app/services/car.service';
 import { CustomerService } from 'src/app/services/customer.service';
 import { PaymentService } from 'src/app/services/payment.service';
+import { RentalService } from 'src/app/services/rental.service';
 
 
 @Component({
@@ -21,15 +23,17 @@ export class PaymentComponent implements OnInit {
   customerName: string;
   creditCardNumber: string;
   expirationDate:string;
+  price: number;
   securityCode:string;
   creditCardPassword: string;
-  customerId: number;
-  price: string;
   isCheck: boolean=false;
+
+  @Input() rent: Rental
 
   @Input() carForRent: Car
   constructor(
     private paymentService: PaymentService,
+    private rentalService: RentalService,
     private carService: CarService,
     private toastrService: ToastrService,
     private customerService: CustomerService,
@@ -52,14 +56,17 @@ export class PaymentComponent implements OnInit {
       expirationDate : this.expirationDate,
       securityCode : this.securityCode,
       price : this.price,
-      customerId : this.customerId,
       customerName: this.customerName
 
     };
     this.paymentService.addPayment(newPayment).subscribe(response =>{
       this.isCheck = true;
       this.toastrService.success("Ödeme işleminiz başarıyla tamamlandı");
-    })   
+    }) 
+    
+    this.rentalService.AddRental(this.rent).subscribe(response =>{
+   
+    })
   }
 
   getCarDetails(carId:number)

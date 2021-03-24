@@ -2,7 +2,6 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Car } from 'src/app/models/car';
-import { CarImage } from 'src/app/models/carImage';
 import { Customer } from 'src/app/models/customer';
 import { Rental } from 'src/app/models/rental';
 import { RentalDto } from 'src/app/models/rentalDto';
@@ -25,6 +24,7 @@ export class RentalComponent implements OnInit {
   carId: number;
   rentDate: Date;
   returnDate: Date;
+  isAdded : boolean=false;
  
   @Input() carForRent: Car
 
@@ -52,16 +52,19 @@ export class RentalComponent implements OnInit {
     })
 
   }
-  AddRental(id: number){
+  AddRental(){
     let newRental:Rental = {
       rentDate: this.rentDate,
       returnDate: this.returnDate,
       carId: this.carForRent.id,
       customerId: this.customerId
     }
-    this.rentalService. AddRental(newRental).subscribe(response=>{
-      this.toastrService.success("Kirala işlemi gerçekleşti ");
-    })
+    // this.rentalService. AddRental(newRental).subscribe(response=>{
+    //   this.toastrService.info("Ödeme sayfasına yönlendiriliyorsunuz");
+    // })
+    this.rental = newRental
+    this.isAdded=true
+    this.toastrService.success("Araç kiralama kaydınız başarıyla oluşturuldu");
   }
 
 

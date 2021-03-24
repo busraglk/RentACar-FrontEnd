@@ -24,7 +24,7 @@
 
 
   <div class="col-md-4">
-    <div *ngFor="let car of cars" class="card">
+    <div *ngIf="car" class="card">
       <div class="card-body">
         <h5 class="card-title">
           <strong> {{ car.description }}</strong>
@@ -41,7 +41,7 @@
       </ul>
 
       <div class="card-body">
-        <app-rental></app-rental>
+        <app-rental [carForRent]="car"></app-rental>
       </div>
     </div>
   </div>

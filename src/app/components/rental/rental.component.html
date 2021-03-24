@@ -32,8 +32,7 @@
             <label for="select-customer">
               Bir müşteri seçiniz: </label><br>
             <select
-              id="select-customer"
-              class="custom-select"
+              id="select-customer" class="custom-select"
               [(ngModel)]="customerId"
               aria-placeholder="All Customers"
               type="number"
@@ -47,9 +46,10 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button
-        routerLink="/payments" class="btn btn-success me-3">Kirala</button>
-        <!-- <app-payment></app-payment> -->
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-bs-target="#creditcard">Kapat</button>
+        <button type="button" class="btn btn-success"  data-bs-target="#creditcard" (click)="AddRental()">Onayla</button>
+        <app-payment *ngIf="isAdded" [rent]= "rental"></app-payment>
+       
       </div>
     </div>
   </div>
