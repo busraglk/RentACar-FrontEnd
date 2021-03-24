@@ -19,7 +19,6 @@ import { CarFilterPipe } from './pipes/car-filter.pipe';
 import { ColorFilterPipe } from './pipes/color-filter.pipe';
 import { BrandFilterPipe } from './pipes/brand-filter.pipe';
 import { CarFilterComponent } from './components/car-filter/car-filter.component';
-import { RentCarComponent } from './components/rent-car/rent-car.component';
 import { PaymentComponent } from './components/payment/payment.component';
 
 
@@ -37,7 +36,6 @@ import { PaymentComponent } from './components/payment/payment.component';
     ColorFilterPipe,
     BrandFilterPipe,
     CarFilterComponent,
-    RentCarComponent,
     PaymentComponent
   ],
   imports: [

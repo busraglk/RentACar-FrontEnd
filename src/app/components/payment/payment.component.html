@@ -1,1 +1,131 @@
-<p>payment works!</p>
+
+<div class="col-50">
+  <label for="fname"><h4>Kart Bilgileri</h4></label>
+  <div class="icon-container">
+    <i class="fab fa-cc-visa" style="color:navy;"></i>
+    <i class="fa fa-cc-amex" style="color:blue;"></i>
+    <i class="fa fa-cc-mastercard" style="color:red;"></i>
+    <i class="fa fa-cc-discover" style="color:orange;"></i>
+  </div>
+  <div class="mb-3 row">
+    <div class="col-md-6">
+  <label for="cname">Kart Üzerindeki İsim:  </label>
+<div class="col-md-8">
+  <input [(ngModel)]="customerName"  type="text" id="cname" name="cardname" placeholder="isminizi giriniz">
+</div>
+</div>
+<div class="mb-3 row">
+  <div class="col-md-4">
+  <label for="creditCardNumber">Kart Numarası: </label>
+  <div class="col-md-8">
+  <input [(ngModel)]="creditCardNumber" type="text" id="creditCardNumber" name="creditCardNumber" placeholder="1111-2222-3333-4444">
+</div>
+</div>
+<div class="mb-3 row">
+  <div class="col-md-4">
+  <label for="expirationDate">Son Kullanma Tarihi </label>
+  <div class="col-md-8">
+  <input  [(ngModel)]="expirationDate" type="text" id="expirationDate" name="expirationDate" placeholder="son kullanma tarihini giriniz">
+</div>
+</div>
+<div class="mb-3 row">
+  <div class="col-md-4">
+      <label for="securityCode">Güvenlik Kodu  </label>
+      <div class="col-md-8">
+      <input  [(ngModel)]=" securityCode" type="text" id="securityCode" name="securityCode" placeholder="352">
+    </div>
+  </div>
+  <label>
+    <input type="checkbox" checked="checked" name="sameadr"> Faturalama ile aynı gönderim adresi
+  </label>
+  <div class="col-lg-auto col-sm-12">
+    <button
+        routerLink="/cars" class="btn btn-danger  me-3">İptal</button>
+    <button class="btn btn btn-success"
+       (click)= "addPayment()">Ödeme Yap</button> 
+
+    
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Modal 
+<div class="modal fade" id="creditcard" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="creditcard"> Kirala</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="col-md-9" >
+          <div class="col">
+      
+             <div class="row">
+              <label for="creditCardNumber">Kredi Kart Numarası: </label>
+              <input
+                  [(ngModel)] = "creditCardNumber"
+                  class="form-control"
+                  type="text"
+                  value=""
+                  id="creditCardNumber"
+                />
+            </div> 
+            <div class="row">
+                <label for="creditCardPassword">Şifre: </label>
+                <input
+                    [(ngModel)] = "creditCardPassword"
+                    class="form-control"
+                    type="text"
+                    value=""
+                    id="creditCardPassword"
+                  />
+              </div>
+              
+          </div>
+          <div class="form-row">
+            <label for="select-customer">
+              Bir müşteri seçiniz: </label
+            >
+            <select
+              id="select-customer"
+              class="custom-select"
+              [(ngModel)]="customerId"
+              aria-placeholder="All Customers"
+              type="number"
+            >
+              <option *ngFor="let customer of customers" type="number" [value]="customer.id">
+                {{customer.customerName}}
+              </option>
+            </select>
+          </div> 
+          
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">İptal</button>
+        <button type="button" class="btn btn-warning" name="isCheck" ngDefaultControl (click)=" addPayment()">  Ödeme Yap</button>
+        <app-rental   *ngIf="isCheck" [carForRent] = "car" ></app-rental>
+      </div>
+    </div>
+  </div>
+</div> -->

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Car } from 'src/app/models/car';
+import { CardetailAndImagesDto } from 'src/app/models/carDetailAndImagesDto';
 import { CarImage } from 'src/app/models/carImage';
 import { CarImageService } from 'src/app/services/car-image.service';
 import { CarService } from 'src/app/services/car.service';
@@ -14,7 +15,9 @@ export class CardetailComponent implements OnInit {
 
   cars:Car[] = [];
   images:CarImage[] = [];
+  carDetail:CardetailAndImagesDto;
   imageUrl = 'https://localhost:44348/';
+  isRented:boolean;
 
   constructor(private carService: CarService,  
     private activatedRoute:ActivatedRoute,
@@ -52,5 +55,4 @@ export class CardetailComponent implements OnInit {
       return "carousel-item";
     }
   }
-
 }

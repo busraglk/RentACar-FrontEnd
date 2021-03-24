@@ -4,7 +4,7 @@
 <div class="row" *ngIf="dataLoaded==true">
 
 <div class="card" *ngFor="let car of cars" style="width: 18rem;" >
-    <img style="height: 150px; width: "  src="{{imageUrl}}/{{car.imagePath[0]}}" routerLink="/cars/details/{{car.id}}" 
+    <img style="height: 150px; "  src="{{imageUrl}}/{{car.imagePath[0]}}" routerLink="/cars/details/{{car.id}}" 
         class="img-fluid img-thumbnail">
   <div class="card-body">
     <h5 class="card-title">{{car.description}}</h5>
@@ -20,9 +20,9 @@
     </section>
   
    
-     <section style="float:right">
+      <section style="float:right">
       <button type="button" class="btn btn-success">Kirala</button>
-    </section>
+    </section> 
   </div>
  </div>
 </div>
