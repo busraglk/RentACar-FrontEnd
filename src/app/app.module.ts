@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
-
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr'
 
@@ -18,11 +17,17 @@ import { CardetailComponent } from './components/car/car-detail/cardetail/cardet
 import { CarFilterPipe } from './pipes/car-filter.pipe';
 import { ColorFilterPipe } from './pipes/color-filter.pipe';
 import { BrandFilterPipe } from './pipes/brand-filter.pipe';
-import { CarFilterComponent } from './components/car-filter/car-filter.component';
+import { CarFilterComponent } from './components/car/car-filter/car-filter.component';
 import { PaymentComponent } from './components/payment/payment.component';
-import { CarAddComponent } from './components/car-add/car-add.component';
-import { BrandAddComponent } from './components/brand-add/brand-add.component';
-import { ColorAddComponent } from './components/color-add/color-add.component';
+import { CarAddComponent } from './components/car/car-add/car-add.component';
+import { BrandAddComponent } from './components/brand/brand-add/brand-add.component';
+import { ColorAddComponent } from './components/color/color-add/color-add.component';
+import { CarListComponent } from './components/car/car-list/car-list.component';
+import { CarUpdateComponent } from './components/car/car-update/car-update.component';
+import { BrandListComponent } from './components/brand/brand-list/brand-list.component';
+import { BrandUpdateComponent } from './components/brand/brand-update/brand-update.component';
+import { ColorListComponent } from './components/color/color-list/color-list.component';
+import { ColorUpdateComponent } from './components/color/color-update/color-update.component';
 
 
 @NgModule({
@@ -42,7 +47,13 @@ import { ColorAddComponent } from './components/color-add/color-add.component';
     PaymentComponent,
     CarAddComponent,
     BrandAddComponent,
-    ColorAddComponent
+    ColorAddComponent,
+    CarListComponent,
+    CarUpdateComponent,
+    BrandListComponent,
+    BrandUpdateComponent,
+    ColorListComponent,
+    ColorUpdateComponent,
   ],
   imports: [
     BrowserModule,

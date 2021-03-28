@@ -1,0 +1,22 @@
+<div class="container">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header"><h5 class="card-title">Renk Güncelleme</h5></div>
+        <div class="card-body">
+          <form [formGroup]="colorUpdateForm">
+            <div class="row mb-3">
+              <label for="colorName" class="col-sm-4 col-form-label">Renk: </label>
+              <div class="col-md-8">
+                <input type="text" id="colorName" formControlName="colorName" class="form-control"
+                       placeholder="Lütfen bir renk giriniz"/>
+              </div>
+            </div>
+            <div class="card-footer">
+              <button class="btn btn-outline-primary" (click)="update()">Güncelle</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
