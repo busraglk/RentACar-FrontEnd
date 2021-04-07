@@ -1,5 +1,4 @@
 
-![detail](https://user-images.githubusercontent.com/70381548/113869714-b79a0380-97b9-11eb-8834-3e50779ba50f.PNG)
 ![giriş](https://user-images.githubusercontent.com/70381548/113866712-502e8480-97b6-11eb-88fd-bc4f6d018c8c.PNG)
 ![anasayfaa](https://user-images.githubusercontent.com/70381548/113866748-59b7ec80-97b6-11eb-8368-3d64619e06f9.PNG)
 ![detail](https://user-images.githubusercontent.com/70381548/113869705-b4067c80-97b9-11eb-82cc-ad0739d0cc28.PNG)
