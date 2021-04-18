@@ -2,6 +2,7 @@ https://www.linkedin.com/in/busragelik/
 
 ![giriş](https://user-images.githubusercontent.com/70381548/113866712-502e8480-97b6-11eb-88fd-bc4f6d018c8c.PNG)
 ![anasayfaa](https://user-images.githubusercontent.com/70381548/113866748-59b7ec80-97b6-11eb-8368-3d64619e06f9.PNG)
+![image](https://user-images.githubusercontent.com/70381548/115146078-b7252680-a05d-11eb-9855-50abc298ad85.png)
 ![detail](https://user-images.githubusercontent.com/70381548/113869705-b4067c80-97b9-11eb-82cc-ad0739d0cc28.PNG)
 ![login](https://user-images.githubusercontent.com/70381548/113869399-5a9e4d80-97b9-11eb-8991-e6e3a434c09b.PNG)
 ![ekranRegister](https://user-images.githubusercontent.com/70381548/113869401-5bcf7a80-97b9-11eb-850b-a4f3beb49a21.PNG)
