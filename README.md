@@ -1,12 +1,12 @@
 [LinkedIn](https://www.linkedin.com/in/busragelik/) <br/>
 [![Github Badge](https://img.shields.io/badge/-Github-000?style=quare&labelColor=000&logo=Github&logoColor=white&link=link)](https://github.com/busraglk/RentACarProject) 
 RentACar Backend  <br>
-### Kullanılan Teknolojiler 
-##### Angular 11.2.5
-##### Angular CLI 11.2.4
-##### Bootstrap 5.0.0-beta2
-##### JQuery 3.6.0
-##### Toastr 2.1.4
+### Kullanılan Teknolojiler                   ### Teknikler
+##### Angular 11.2.5                          ##### Custom Form Control
+##### Angular CLI 11.2.4                      ##### Custom Pipe
+##### Bootstrap 5.0.0-beta2                   ##### Custom Directive
+##### JQuery 3.6.0                            ##### Guards
+##### Toastr 2.1.4                            ##### LocalStorage Service
 ##### font-awesome 4.7.0
 
 
