@@ -1,4 +1,4 @@
-[LinkedIn](https://www.linkedin.com/in/busragelik/) <br/>
+[LinkedIn](https://www.linkedin.com/in/busragelik/)  /  [E-Posta](busragelik@gmail.com) <br/>
 [![Github Badge](https://img.shields.io/badge/-Github-000?style=quare&labelColor=000&logo=Github&logoColor=white&link=link)](https://github.com/busraglk/RentACarProject) 
 RentACar Backend  <br>
 ### Kullanılan Teknolojiler                   
