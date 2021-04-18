@@ -1,5 +1,6 @@
 [LinkedIn](https://www.linkedin.com/in/busragelik/) <br/>
-RentACar Backend[![Github Badge](https://img.shields.io/badge/-Github-000?style=quare&labelColor=000&logo=Github&logoColor=white&link=link)](https://github.com/busraglk/RentACarProject)  <br>
+[![Github Badge](https://img.shields.io/badge/-Github-000?style=quare&labelColor=000&logo=Github&logoColor=white&link=link)](https://github.com/busraglk/RentACarProject) 
+RentACar Backend  <br>
 ### Kullanılan Teknolojiler 
 ##### Angular 11.2.5
 ##### Angular CLI 11.2.4
