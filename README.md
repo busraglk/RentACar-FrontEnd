@@ -4,6 +4,7 @@ RentACar Backend  <br>
 ### Kullanılan Teknolojiler     
 ![Angular Badge](https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white)
 ![Bootstrap Badge](https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white)
+![jQuery Badge](https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white)
 ##### Angular 11.2.5                          
 ##### Angular CLI 11.2.4                     
 ##### Bootstrap 5.0.0-beta2                  
