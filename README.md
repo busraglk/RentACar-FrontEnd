@@ -2,7 +2,7 @@
 [![Github Badge](https://img.shields.io/badge/-Github-000?style=quare&labelColor=000&logo=Github&logoColor=white&link=link)](https://github.com/busraglk/RentACarProject) 
 RentACar Backend  <br>
 ### Kullanılan Teknolojiler     
-[![Angular Badge](https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white)]
+![Angular Badge](https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white)
 ##### Angular 11.2.5                          
 ##### Angular CLI 11.2.4                     
 ##### Bootstrap 5.0.0-beta2                  
