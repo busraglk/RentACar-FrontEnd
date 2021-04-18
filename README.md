@@ -1,3 +1,4 @@
+https://www.linkedin.com/in/busragelik/
 
 ![giriş](https://user-images.githubusercontent.com/70381548/113866712-502e8480-97b6-11eb-88fd-bc4f6d018c8c.PNG)
 ![anasayfaa](https://user-images.githubusercontent.com/70381548/113866748-59b7ec80-97b6-11eb-8368-3d64619e06f9.PNG)
