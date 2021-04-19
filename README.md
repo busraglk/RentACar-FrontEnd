@@ -18,8 +18,8 @@ RentACar Backend  <br>
 ![anasayfaa](https://user-images.githubusercontent.com/70381548/113866748-59b7ec80-97b6-11eb-8368-3d64619e06f9.PNG)
 ![image](https://user-images.githubusercontent.com/70381548/115146078-b7252680-a05d-11eb-9855-50abc298ad85.png)
 ![detail](https://user-images.githubusercontent.com/70381548/113869705-b4067c80-97b9-11eb-82cc-ad0739d0cc28.PNG)
-![image](https://user-images.githubusercontent.com/70381548/115166463-f84c2380-a0bb-11eb-9b08-a686603ec7ec.png)
-![ekranRegister](https://user-images.githubusercontent.com/70381548/113869401-5bcf7a80-97b9-11eb-850b-a4f3beb49a21.PNG)
+![image](https://user-images.githubusercontent.com/70381548/115166490-2af61c00-a0bc-11eb-9526-5fe272961cac.png)
+![image](https://user-images.githubusercontent.com/70381548/115166505-3fd2af80-a0bc-11eb-9f52-5838ed37102d.png)
 ![kart](https://user-images.githubusercontent.com/70381548/113869405-5c681100-97b9-11eb-898d-e99ab5ad9a0a.PNG)
 ![tarih](https://user-images.githubusercontent.com/70381548/113869408-5d993e00-97b9-11eb-9bfc-fc4dc65b4043.PNG)
 
