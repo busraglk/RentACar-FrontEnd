@@ -19,7 +19,10 @@ export class CarComponent implements OnInit {
   currentCar:Car;
   dataLoaded = false;
   filterText:string;
-  imageUrl = 'https://localhost:44348/';
+  carId:number;
+  imageUrl = 'https://localhost:44348';
+  defaultPath = '/Images/default.jpg';
+  Images: string[];
 
   constructor(private carService: CarService, 
     private activatedRoute: ActivatedRoute,
@@ -38,6 +41,7 @@ export class CarComponent implements OnInit {
       }
       else{
         this.getCars()
+        this.carId = params["carId"]
       }
     })
   }
@@ -45,9 +49,10 @@ export class CarComponent implements OnInit {
   getCars() {
     this.carService.getCars().subscribe(response=>{
       this.cars = response.data
+      this.Images = response?.data[0].imagePath
       this.dataLoaded = true;
-      console.log(response.data);
-      console.log(this.cars);
+      // console.log(response.data);
+      // console.log(this.cars);
     });
   }
 

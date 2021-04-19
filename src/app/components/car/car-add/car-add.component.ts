@@ -36,7 +36,8 @@ export class CarAddComponent implements OnInit {
       colorId: ["", Validators.required],
       modelYear: ["", Validators.required],
       dailyPrice: ["", Validators.required],
-      description: ["", Validators.required]
+      description: ["", Validators.required],
+      findexPoint:["",Validators.required]
 
     })
   }
@@ -57,7 +58,8 @@ export class CarAddComponent implements OnInit {
       if(this.carAddForm.valid){
       let carModel = Object.assign({}, this.carAddForm.value)
       carModel.brandId = parseInt(carModel.brandId);
-      carModel.colorId = parseInt(carModel.colorId)
+      carModel.colorId = parseInt(carModel.colorId);
+      carModel.findexPoint = parseInt(carModel.findexPoint);
       this.carService.add(carModel).subscribe(response=>{
         console.log(response)
         this.toastrService.success( response.message, "Başarılı")

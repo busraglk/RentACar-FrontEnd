@@ -1,4 +1,4 @@
-<div class="content">
+<div class="container">
   <div class="col-md-8">
     <div class="card">
       <div class="card-header">Araba Güncelleme</div>
@@ -47,7 +47,7 @@
             </div>
             <div class="col col-md-6">
               <input
-                type="number"
+                type="text"
                 class="form-control"
                 id="modelYear"
                 formControlName="modelYear"
@@ -68,6 +68,22 @@
                 formControlName="dailyPrice"
                 placeholder="Günlük yeni fiyatı giriniz"
               />
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col col-md-3">
+              <label for="description">Findeks Puanı:</label>
+            </div>
+            <div class="col col-md-6">
+              <div class="form-group">
+                <input
+                  type="number"
+                  id="findexPoint"
+                  formControlName="findexPoint"
+                  class="form-control"
+                  placeholder="Puanı giriniz"
+                />
+              </div>
             </div>
           </div>
           <div class="row mb-3">

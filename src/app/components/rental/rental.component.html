@@ -1,55 +1,54 @@
-
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#carForRent"> Kirala </button>
+<div class="d-grid gap-2">
+  <button type="button" class="btn btn-secondary" routerLink='/cars'>Geri</button>
+  <button type="button" class="btn btn-primary"  data-bs-toggle="modal" data-target="#carForRent">
+    Aracı Kirala
+  </button>
+
+</div>
+
 
 <!-- Modal -->
 <div class="modal fade" id="carForRent" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h3 class="modal-title" id="exampleModalLabel">Aracı Kirala</h3>
+        <h5 class="modal-title" id="exampleModalLabel">
+          {{ carForRent.brandName }} - {{ carForRent.colorName }} | Aracı Kirala
+        </h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <h4>Lütfen Tarih belirleyiniz</h4>
+      <span aria-hidden="true">&times;</span>
       <div class="modal-body">
-        <div class="col-md-9" >
-          <div class="col">
-            <label for="rent-date" >Kiralama Tarihi: </label>
-            <div class="row">
-              <input
-                  [(ngModel)] = "rentDate" class="form-control" type="datetime-local"
-                  value="" id="rent-date" required />
-            </div>
-            <div class="row">
-              <label for="return-date">Teslim Tarihi: </label>
-              <input
-                  [(ngModel)] = "returnDate" class="form-control" type="datetime-local"
-                  value="" id="return-date" required />
-            </div>
-            
+        <div class="form-group row mb-2">
+          <label for="example-date-input" class="col-4 col-form-label">Günlük</label>
+          <div class="col-8">
+            <input type="text" disabled="disabled" class="form-control" [value]="carForRent.dailyPrice | currency: '₺'" />
           </div>
-          <div class="form-row">
-            <label for="select-customer">
-              Bir müşteri seçiniz: </label><br>
-            <select
-              id="select-customer" class="custom-select"
-              [(ngModel)]="customerId"
-              aria-placeholder="All Customers"
-              type="number"
-            >
-              <option *ngFor="let customer of customers" type="number" [value]="customer.id">
-                {{customer.customerName}}
-              </option>
-            </select>
-          </div> 
-          
+        </div>
+        <div class="form-group row mb-2">
+          <label for="example-date-input" class="col-4 col-form-label">Başlangıç</label>
+          <div class="col-8">
+            <input (change)="onChangeEvent($event)" min="{{ getRentMinDate() }}" [(ngModel)]="rentDate" type="date"
+              class="form-control" id="rent-date" placeholder="Bir gün seçiniz." />
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="example-date-input" class="col-4 col-form-label">Bitiş</label>
+          <div class="col-8">
+            <input disabled="{{ !firstDateSelected }}" min="{{ getReturnMinDate() }}" max="{{ getReturnMaxDate() }}"
+              [(ngModel)]="returnDate" type="date" class="form-control" id="return-date"
+              placeholder="Bir gün seçiniz." />
+          </div>
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-bs-target="#creditcard">Kapat</button>
-        <button type="button" class="btn btn-success"  data-bs-target="#creditcard" (click)="AddRental()">Onayla</button>
-        <app-payment *ngIf="isAdded" [rent]= "rental"></app-payment>
-       
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+          Kapat
+        </button>
+        <button ddata-dismiss="modal" (click)="createRental()" type="button" class="btn btn-primary">
+          Onayla
+        </button>
       </div>
     </div>
   </div>

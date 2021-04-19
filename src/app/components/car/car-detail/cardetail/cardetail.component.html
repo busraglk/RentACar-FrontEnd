@@ -1,47 +1,119 @@
-<h5 class="p-3 mb-2 bg-secondary text-white">Araç Bilgisi</h5>
 <div class="container">
-<div class="row">
-  <div class="col-md-8">
-
-    <div *ngFor="let car of cars let i=index" id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-      <div class="carousel-inner">
-        <div *ngFor="let path of car.imagePath let i=index" [ngClass]="getSliderClassName(i)" >
-          <img src="{{imageUrl}}/{{path}}"  class="d-block w-100" alt="Image">
+  <h5 class="p-3 mb-2 bg-secondary text-white">Araç Bilgisi</h5>
+  <div class="container">
+    <div class="col-md-12">
+      <div class="alert alert-success" role="alert">
+        <span class="fw-bold"
+          >Bu araç için gerekli <span class="fw-bolder">Findeks</span> puanı : </span
+        >{{ car.findexPoint }}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-8">
+        <div
+          *ngFor="let car of cars; let i = index"
+          id="carouselExampleControls"
+          class="carousel slide"
+          data-bs-ride="carousel"
+        >
+          <div class="carousel-inner">
+            <div
+              *ngFor="let path of car.imagePath; let i = index"
+              [ngClass]="getSliderClassName(i)"
+            >
+              <img
+                src="{{ imageUrl }}/{{ path }}"
+                class="d-block w-100"
+                alt="Image"
+              />
+            </div>
+          </div>
+          <button
+            class="carousel-control-prev"
+            type="button"
+            data-bs-target="#carouselExampleControls"
+            data-bs-slide="prev"
+          >
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button
+            class="carousel-control-next"
+            type="button"
+            data-bs-target="#carouselExampleControls"
+            data-bs-slide="next"
+          >
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
         </div>
       </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"  data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"  data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
-    </div>
 
-  </div>
+      <div class="col-md-4">
+        <div *ngIf="car" class="card">
+          <div class="card-body">
+            <h5 class="card-title">
+              <strong> {{ car.description }}</strong>
+            </h5>
+          </div>
 
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Marka : {{ car.brandName }}</li>
+            <li class="list-group-item">Renk : {{ car.colorName }}</li>
+            <li class="list-group-item">Model : {{ car.modelYear }}</li>
+            <li class="list-group-item">
+              Günlük Kiralama Ücreti :
+              {{ car.dailyPrice | currency: "TRY":"symbol-narrow":"1.2-2" }}
+            </li>
+            <li class="list-group-item">Findeks Puanı: {{ car.findexPoint }}</li>
+            <li class="list-group-item">
+              Kiralama Tarihi:
+              <div class="col-6">
+                <input
+                  class="form-control"
+                  min="{{ getMinDate() }}"
+                  value="{{ getMinDate() }}"
+                  type="date"
+                  id="rentDate"
+                  [(ngModel)]="rentDate"
+                />
+              </div>
+            </li>
+            <li class="list-group-item">
+              Teslim Tarihi:
+              <div class="col-6">
+                <input
+                  min="{{ getMinDate() }}"
+                  value="{{ getMinDate() }}"
+                  class="form-control"
+                  type="date"
+                  id="returnDate"
+                  [(ngModel)]="returnDate"
+                />
+              </div>
+            </li>
+          </ul>
+          <br/>
 
-
-  <div class="col-md-4">
-    <div *ngIf="car" class="card">
-      <div class="card-body">
-        <h5 class="card-title">
-          <strong> {{ car.description }}</strong>
-        </h5>
-      </div>
-
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">Marka : {{ car.brandName }}</li>
-        <li class="list-group-item">Renk : {{ car.colorName }}</li>
-        <li class="list-group-item">Model : {{ car.modelYear }}</li>    
-        <li class="list-group-item">
-          Günlük Kiralama Ücreti : {{ car.dailyPrice  | currency: "TRY":"symbol-narrow":"1.2-2"}} 
-        </li>
-      </ul>
-
-      <div class="card-body">
-        <app-rental [carForRent]="car"></app-rental>
+          <div *ngIf="isAuthenticate()">
+            
+            <div class="card-body">
+              <app-rental [carForRent]="car"></app-rental>
+            </div>
+          </div>
+          <div *ngIf="!isAuthenticate()">
+            <div
+              class="alert alert-warning"
+              style="
+                font-size: medium;
+                font-family: 'Gill Sans', 'Gill Sans MT', Calibri,
+                  'Trebuchet MS', sans-serif;
+              "
+            >
+              Araba kiralama işlemi için önce giriş yapmalısınız.
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>

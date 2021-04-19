@@ -53,15 +53,18 @@ export class CarUpdateComponent implements OnInit {
       modelYear: ['', Validators.required],
       dailyPrice: ['', Validators.required],
       description: ['', Validators.required],
+      findexPoint:["",Validators.required]
     });
   }
 
   update() {
     if (this.updateCarForm.valid) {
+      console.log("valid")
       let carModel = Object.assign({}, this.updateCarForm.value);
        carModel.brandId = Number(carModel.brandId);
        carModel.colorId = Number(carModel.colorId);
        carModel.id = Number(carModel.id);
+       carModel.findexPoint = Number(carModel.findexPoint);
       console.log(carModel);
       this.carService.update(carModel).subscribe(
         (response) => {
@@ -69,11 +72,11 @@ export class CarUpdateComponent implements OnInit {
         },
         (responseError) => {
           //console.log(responseError)
-          if (responseError.error.ValidationErrors.length > 0) {
+          if (responseError.error.ValidationErrors?.length > 0) {
             console.log(responseError.error.ValidationErrors);
             for (
               let i = 0;
-              i < responseError.error.ValidationErrors.length;
+              i < responseError.error.ValidationErrors?.length;
               i++
             ) {
               this.toastrService.error(

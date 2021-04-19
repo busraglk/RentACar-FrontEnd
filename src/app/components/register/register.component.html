@@ -1,0 +1,95 @@
+<body>
+  <div class="main">
+    <br>
+    <section class="signup">
+      <div class="container  p-1 border rounded-3 bg-light">
+      
+        <div class="signup-content">
+          <form
+            method="POST"
+            [formGroup]="registerForm"
+            id="signup-form"
+            class="signup-form"
+            fo
+          >
+            <h2 class="form-title">KAYIT OL</h2>
+            <div class="form-group">
+              <input
+			  formControlName="firstName"
+                type="text"
+                class="form-input"
+                name="name"
+                id="name"
+                placeholder="Adınızı giriniz"
+              />
+            </div>
+            <div class="form-group">
+              <input
+			  formControlName="lastName"
+                type="text"
+                class="form-input"
+                name="name"
+                id="name"
+                placeholder="Soyadınızı giriniz"
+              />
+            </div>
+            <div class="form-group">
+              <input
+			  formControlName="email"
+                type="email"
+                class="form-input"
+                name="email"
+                id="email"
+                placeholder="Mail adresinizi giriniz"
+              />
+            </div>
+            <div class="form-group">
+              <input
+			  formControlName="password"
+                type="password"
+                class="form-input"
+                name="password"
+                id="password"
+                placeholder="Şifrenizi giriniz"
+              />
+              <span
+                toggle="#password"
+                class="zmdi zmdi-eye field-icon toggle-password"
+              ></span>
+            </div>
+            <div class="form-group">
+              <input
+              formControlName="confirmPassword"
+                type="password"
+                class="form-input"
+                name="re_password"
+                id="confirmPassword"
+                placeholder="Şifrenizi tekrar giriniz"
+              />
+            </div>
+            <div class="form-group">
+              <input
+                type="checkbox"
+                name="agree-term"
+                id="agree-term"
+                class="agree-term"
+              />
+              <label for="agree-term" class="label-agree-term"
+                ><span><span></span></span>Tüm kullanım şartlarını kabul
+                ediyorum
+                <a href="#" class="term-service">Kullanım Şartları</a></label
+              >
+            </div>
+            <button class="w-100 btn btn-lg btn-primary" type="submit" (click)="register()">Kayıt Ol</button>
+            <p class="loginhere">
+              Zaten bir hesabınız var mı?<a href="#" routerLink="login"
+                >Giriş Yap</a
+              >
+            </p>
+          </form>
+  
+        </div>
+      </div>
+    </section>
+  </div>
+</body>

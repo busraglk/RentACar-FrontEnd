@@ -1,133 +1,281 @@
-<button type="button" class="btn btn-success me-3" data-bs-toggle="modal" data-bs-target="#creditcard">
- Ödeme Yap 
-</button>
-<!-- Modal -->
-<div class="modal fade" id="creditcard" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="creditcard">Kart Bilgileri</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+<div class="container">
+<div *ngIf="car" class="card mt-4">
+  <div class="card-header text-center">
+    <strong>İşlem Özeti</strong>
+  </div>
+  <div class="card-body">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Kiralama Tarihi</th>
+          <th>Teslim Tarihi</th>
+          <th>Marka</th>
+          <th>Renk</th>
+          <th>Model Yılı</th>
+          <th>Günlük Fiyat</th>
+          <th>Toplam Fiyat</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{ rental.rentDate }}</td>
+          <td>{{ rental.returnDate }}</td>
+          <td>{{ car.brandName }}</td>
+          <td>{{ car.colorName }}</td>
+          <td>{{ car.modelYear }}</td>
+          <td>{{ car.dailyPrice | currency: "₺" }}</td>
+          <td>
+            <strong class="text-danger">{{
+              amountOfPayment | currency: "₺"
+              }}</strong>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="row mt-4">
+  <div class="col-lg-6">
+    <div class="card">
+      <div class="card-header fw-bold">
+        <i class="bi-credit-card me-1"></i> Kart bilgilerinizi doldurun
       </div>
-      <div class="modal-body">
-        <div class="icons">
-          <img src="https://img.icons8.com/color/48/000000/visa.png" />
-          <img
-            src="https://img.icons8.com/color/48/000000/mastercard-logo.png"
-          />
-          <img src="https://img.icons8.com/color/48/000000/maestro.png" />
-        </div>
-        <div class="col-md-9" >
-          <div class="col">
-      
-              <div class="my-3">
-                <div class="form-check">
-                  <input id="credit" name="paymentMethod" type="radio" class="form-check-input" checked required>
-                  <label class="form-check-label" for="credit">Kredi Kartı</label>
-                </div>
-                <div class="form-check">
-                  <input id="debit" name="paymentMethod" type="radio" class="form-check-input" required>
-                  <label class="form-check-label" for="debit">Banka Kartı</label>
-                </div>
-                <div class="row">
-                <div class="col-md-6">
-              <label for="customerName">Kart Üzerindeki İsim: </label>
-              <input [(ngModel)] = "customerName" class="form-control" type="text" value="" id="customerName"  required/>
-            </div>
-            <div class="col-md-6">
-            
-              <label for="creditCardNumber">Kredi Kart Numarası: </label>
-              <input [(ngModel)] = "creditCardNumber" class="form-control" type="text" value="" id="creditCardNumber" required/>
-            </div>
-            <div class="col-md-6">
-              <label for="securityCode">Güvenlik Kodu: </label>
-              <input [(ngModel)] = "securityCode" class="form-control" type="text"value="" id="securityCode" required/>
-            </div>
-            <div class="col-md-6">
-              <label for="expirationDate">Son Kullanma Tarihi: </label>
-              <input [(ngModel)] = "expirationDate" class="form-control" type="text"value="" id="expirationDate" placeholder="12/2021" required/>
-            </div>
-            <div class="col-md-4">
-                <label for="dailyPrice">Fiyat: </label>
-              <input [(ngModel)] = "price" class="form-control" type="number" value="" id="dailyPrice" required/>
-            </div>
-            
-            <div class="col-md-4">
-                <label for="creditCardPassword">Şifre: </label>
-                <input [(ngModel)] = "creditCardPassword" class="form-control"  type="password"value="" id="creditCardPassword"/>
-              </div>
+      <div class="icons">
+        <img src="https://img.icons8.com/color/48/000000/visa.png" />
+        <img
+          src="https://img.icons8.com/color/48/000000/mastercard-logo.png"
+        />
+        <img src="https://img.icons8.com/color/48/000000/maestro.png" />
+      </div>
+      <div *ngIf="paymentAddForm" class="card-body">
+       
+        <form [formGroup]="paymentAddForm" (ngSubmit)="add()">
+          <div class="form-floating mb-3">
+            <input type="text" id="nameOnTheCard" class="form-control" placeholder="nameOnTheCard"
+              formControlName="nameOnTheCard" />
+            <label for="nameOnTheCard">Kart Üzerindeki İsim</label>
           </div>
-        </div>
-
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">İptal</button>
-        <button type="button" class="btn btn-warning" name="isCheck" ngDefaultControl (click)=" addPayment()"> Ödeme Yap</button>
+          <div class="form-floating mb-3">
+            <input type="text" id="creditCardNumber" class="form-control" placeholder="creditCardNumber"
+              formControlName="creditCardNumber" />
+            <label for="creditCardNumber">Kart Numarası</label>
+          </div>
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="form-floating mb-3">
+                <input type="text" id="expirationDate" class="form-control" placeholder="expirationDate"
+                  formControlName="expirationDate" />
+                <label for="expirationDate">Son Kullanım Tarihi</label>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="form-floating mb-3">
+                <input type="text" id="securityCode" class="form-control" placeholder="Cvv" formControlName="securityCode" />
+                <label for="securityCode">Güvenlik Kodu</label>
+              </div>
+            </div>
+          </div>
+          <div class="form-check mb-3">
+            <input class="form-check-input" type="checkbox" id="save" formControlName="save" />
+            <label class="form-check-label" for="save">
+              Kart bilgilerimin kayıt edilmesini istiyorum.
+            </label>
+          </div>
+          <div class="text-end">
+            <button class="btn btn-primary">
+              <i class="bi-credit-card-2-back me-1"></i> Ödeme Yap
+            </button>
+          </div>
+        </form>
       </div>
     </div>
   </div>
-</div> 
-
-<!-- 
-<hr class="my-4">
-  
-<h4 class="mb-3">Kart Bilgileri</h4>
-
-<div class="my-3">
-  <div class="form-check">
-    <input id="credit" name="paymentMethod" type="radio" class="form-check-input" checked required>
-    <label class="form-check-label" for="credit">Kredi Kartı</label>
-  </div>
-  <div class="form-check">
-    <input id="debit" name="paymentMethod" type="radio" class="form-check-input" required>
-    <label class="form-check-label" for="debit">Banka Kartı</label>
-  </div>
-  
-</div>
-
-<div class="row gy-3">
-  <div class="col-md-6">
-    <label for="cardName" class="form-label">Kart üzerindeki isim</label>
-    <input type="text" class="form-control" id="cardName" placeholder="" required>
-    <small class="text-muted">Full name as displayed on card</small>
-    
-  </div>
-
-  <div class="col-md-6">
-    <label for="cardNumber" class="form-label">Kart numarası</label>
-    <input type="text" class="form-control" id="cardNumber" placeholder="" required>
-     
-  </div>
-
-  <div class="col-md-3">
-    <label for="cc-expiration" class="form-label">Tarih</label>
-    <input type="text" class="form-control" id="cc-expiration" placeholder="" required>
-   
-  </div>
-
-  <div class="col-md-3">
-    <label for="cardCvv" class="form-label">CVV</label>
-    <input type="text" class="form-control" id="cardCvv" placeholder="" required>
-  
+  <div class="col-lg-6">
+    <app-saved-card (selectedCard)="setSelectedCard($event)"></app-saved-card>
   </div>
 </div>
+</div>
+<!-- <body class="bg">
+  <br>
+  <div class="container">
+    <main>
+      <h4 class="d-flex justify-content-between align-items-center mb-3">
+        <span class="text-primary">Ödeme İşlemi</span>
+      </h4>
+      <div class="icons">
+        <img src="https://img.icons8.com/color/48/000000/visa.png" />
+        <img
+          src="https://img.icons8.com/color/48/000000/mastercard-logo.png"
+        />
+        <img src="https://img.icons8.com/color/48/000000/maestro.png" />
+      </div>
+      <div class="row g-5">
+        <div class="col-md-5 col-lg-4 order-md-last">
+          <h4 class="d-flex justify-content-between align-items-center mb-3">
+            <span class="text-primary">Kiralama Bilgileri</span>
+          </h4>
+          <ul class="list-group mb-3">
+            <li class="list-group-item d-flex justify-content-between lh-sm">
+              <div>
+                <h6 class="my-0">Kiralama Tarihi</h6>
+                <small class="text-muted">{{ rentDate }}</small>
+              </div>
+            </li>
+            <li class="list-group-item d-flex justify-content-between lh-sm">
+              <div>
+                <h6 class="my-0">Teslim Tarihi</h6>
+                <small class="text-muted">{{ returnDate }}</small>
+              </div>
+            </li>
+            <li class="list-group-item d-flex justify-content-between">
+              <span>Toplam Ücret (TL)</span>
+              <strong>{{ amount }}</strong>
+            </li>
+          </ul>
+        </div>
+        <div *ngIf="data != false">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Kayıtlı Kart bilgileriniz</th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let payment of userPayment">
+                <td>
+                  <b>Kart Numarası: </b>{{ payment.creditCardNumber[0]
+                  }}{{ payment.creditCardNumber[1]
+                  }}{{ payment.creditCardNumber[2] }}*********
+                </td>
+                <td><b>Kart Üzerindeki İsim:</b>{{ payment.customerName }}</td>
+                <td><b>Son Kullanma Tarihi:</b>{{ payment.expirationDate }}</td>
+                <td><b>Güvenlik Kodu: </b>***</td>
+                <td> 
+                  <button type="button" class="btn btn-primary" (click)="pay()">
+                    Öde
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="col-md-7 col-lg-8">
+          <form class="needs-validation" novalidate>
+            <form [formGroup]="creditCardAddForm">
+              <div class="mb-3">
+                <label for="cardNumber"><b>Kart Numarası</b></label>
+                <div class="form-group">
+                  <input
+                    type="text"
+                    id="creditCardNumber"
+                    formControlName="creditCardNumber"
+                    class="form-control"
+                    placeholder="Kart Numarası"
+                  />
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="customerName"><b>Kart Üzerindeki İsim</b></label>
+                <div class="form-group">
+                  <input
+                    type="text"
+                    id="customerName"
+                    formControlName="customerName"
+                    class="form-control"
+                    placeholder="İsim"
+                  />
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="expirationDate"><b>Son Kullanma Tarihi</b></label>
+                <div class="form-group">
+                  <input
+                    type="text"
+                    id="expirationDate"
+                    formControlName="expirationDate"
+                    class="form-control"
+                    placeholder="12/2021"
+                  />
+                </div>
+              </div>
 
-<hr class="my-4">
+              <div class="mb-3">
+                <label for="securityCode"><b>Güvenlik Kodu</b></label>
+                <div class="form-group">
+                  <input
+                    type="text"
+                    id=" securityCode"
+                    formControlName=" securityCode"
+                    class="form-control"
+                    placeholder="123"
+                  />
+                </div>
+              </div>
+            </form>
+            <hr class="my-4" />
 
-<button  class="w-100 btn btn-primary btn-lg" type="button">Ödeme işlemi</button>
-</form>
-</div> -->
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+              <button
+                type="button"
+                class="btn btn-primary"
+                data-bs-toggle="modal"
+                data-bs-target="#exampleModal"
+              >
+                Ödeme Yap
+              </button>
 
-
-
-      <!-- <div class="col-50">
-  <label for="fname"><h4>Kart Bilgileri</h4></label>
-  <div class="icon-container">
-    <i class="fab fa-cc-visa" style="color:navy;"></i>
-    <i class="fa fa-cc-amex" style="color:blue;"></i>
-    <i class="fa fa-cc-mastercard" style="color:red;"></i>
-    <i class="fa fa-cc-discover" style="color:orange;"></i>
-  </div> -->
-
-
+              <div
+                class="modal fade"
+                id="exampleModal"
+                tabindex="-1"
+                aria-labelledby="exampleModalLabel"
+                aria-hidden="true"
+              >
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">
+                        Kart Bilgileri Kayıt
+                      </h5>
+                      <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"
+                      ></button>
+                    </div>
+                    <div class="modal-body">
+                      Kart bilgilerinizin sistemimize kayıt olmasını ister
+                      misiniz?
+                    </div>
+                    <div class="modal-footer">
+                      <button
+                        type="button"
+                        class="btn btn-secondary"
+                        data-bs-dismiss="modal"
+                        (click)="pay()"
+                      >
+                        Kaydetmeden Devam Et
+                      </button>
+                      <button
+                        type="button"
+                        class="btn btn-primary"
+                        (click)="addPayment()"
+                      >
+                        Kaydet
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </main>
+  </div> --> 

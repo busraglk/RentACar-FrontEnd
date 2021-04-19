@@ -1,36 +1,129 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">Rent A Car Project</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" routerLink = "/cars">ARAÇLAR</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">KAMPANYALAR</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Listeler
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" routerLink="/cars/list">Araba Listesi</a></li>
-              <li><a class="dropdown-item" routerLink='/brands/list'>Marka Listesi</a></li>
-              <li><a class="dropdown-item" routerLink='/colors/list'>Renk Listesi</a></li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">LOKASYONLAR</a>
-          </li>
-        </ul>
-        <form class="d-flex">
-          <button class="btn btn-outline-success me-3" class="rounded-pill"  type="submit" class="login-btn">ÜYE GİRİŞİ</button>
-          <button class="btn btn-outline-success " class="rounded-pill"  type="submit" class="signup-btn">ÜYE OL</button>
 
-        </form>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container">
+    <a class="navbar-brand" href="#"
+      ><img
+        src="https://s3.amazonaws.com/designmantic-logos/logos/2021/Apr/medium-9769-606c6dbfce27c.png"
+        width="90px"
+        alt="Rent A Car"
+        height="50px"
+    /></a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="font-size:large; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="/home"><i class="fas fa-home"></i>Anasayfa</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/cars">Arabalar</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="">Kampanyalar</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            id="navbarDropdown"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Listeler
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li>
+              <a class="dropdown-item" routerLink="/cars/list"
+                >Araba Listesi</a
+              >
+            </li>
+            <li>
+              <a class="dropdown-item" routerLink="/brands/list"
+                >Marka Listesi</a
+              >
+            </li>
+            <li>
+              <a class="dropdown-item" routerLink="/colors/list"
+                >Renk Listesi</a
+              >
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="">Lokasyonlar</a>
+        </li>
+      </ul>
+      <div *ngIf="authenticated== false" >
+        <button type="button" class="btn btn-primary" routerLink="/login">
+          Giriş Yap
+        </button>
+        <button  type="button" class="btn btn-primary"
+          style="margin-left: 10px"
+          routerLink="/register"
+        >
+          Kayıt Ol
+        </button>
       </div>
-    </div>
-  </nav>
+        <div *ngIf="authenticated== true" class="nav-item dropdown">
+          <div class="btn-group d-grid">
+            <button class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown">
+              <i class="fas fa-user"></i>
+               {{ user?.firstName }}  {{ user?.lastName }} 
+            </button>
+       
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            
+            <li>
+              <a class="dropdown-item" routerLink="profile"
+              ><i style="margin-right: 7px" class="fas fa-user"></i>
+              Profilim</a>
+            </li>
+      
+            <li>
+              <hr class="dropdown-divider" />
+            </li>
+            <li>
+              <a class="dropdown-item" routerLink="profile"
+                ><i style="margin-right: 7px" class="fas fa-car"></i>Kiralanan Araçlar</a
+              >
+            </li>
+            <li>
+              <hr class="dropdown-divider" />
+            </li>
+            <li>
+              <a class="dropdown-item" routerLink="cards"
+                ><i style="margin-right: 7px" class="fas fa-credit-card"></i>Kartlarım</a
+              >
+            </li>
+            <li>
+              <hr class="dropdown-divider" />
+            </li>
+            <li>
+              <a class="dropdown-item" routerLink="cards"
+                ><i style="margin-right: 7px" class="fas fa-user-cog"></i
+                >       
+               Ayarlar</a
+              >
+            </li>
+            <li>
+              <hr class="dropdown-divider" />
+            </li>
+            <li>
+              <a class="dropdown-item"   (click)="logOut()"
+                ><i style="margin-right: 7px" class="fas fa-sign-out-alt"></i
+                >Çıkış Yap</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div> 
+</nav> 

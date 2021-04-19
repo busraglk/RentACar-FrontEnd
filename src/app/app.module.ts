@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr'
 
+import { JwtModule } from '@auth0/angular-jwt';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CarComponent } from './components/car/car.component';
@@ -28,7 +29,19 @@ import { BrandListComponent } from './components/brand/brand-list/brand-list.com
 import { BrandUpdateComponent } from './components/brand/brand-update/brand-update.component';
 import { ColorListComponent } from './components/color/color-list/color-list.component';
 import { ColorUpdateComponent } from './components/color/color-update/color-update.component';
+import { LoginComponent } from './components/login/login.component';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { RegisterComponent } from './components/register/register.component';
+import { FooterComponent } from './footer/footer.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { HomeComponent } from './components/home/home.component';
+import { SavedCardComponent } from './components/payment/saved-card/saved-card.component';
 
+
+
+export function tokenGetter() {
+  return localStorage.getItem("token");
+}
 
 @NgModule({
   declarations: [
@@ -54,6 +67,13 @@ import { ColorUpdateComponent } from './components/color/color-update/color-upda
     BrandUpdateComponent,
     ColorListComponent,
     ColorUpdateComponent,
+    LoginComponent,
+    RegisterComponent,
+    FooterComponent,
+    ProfileComponent,
+    HomeComponent,
+    SavedCardComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -64,10 +84,19 @@ import { ColorUpdateComponent } from './components/color/color-update/color-upda
     BrowserAnimationsModule,
     ToastrModule.forRoot({
       positionClass:"toast-bottom-right"
+    }),
+    JwtModule.forRoot({
+      config:{
+        tokenGetter: tokenGetter,
+      }
     })
-
   ],
-  providers: [],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, 
+      useClass:AuthInterceptor,
+      multi:true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
