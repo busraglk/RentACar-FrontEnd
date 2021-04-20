@@ -1,6 +1,6 @@
 export interface Payment {
     paymentId?:number;
-    cardId:number;
+    cardId?:number;
     customerId:number;
     firstName: string;
     lastName: string;

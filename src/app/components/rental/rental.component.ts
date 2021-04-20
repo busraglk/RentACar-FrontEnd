@@ -42,6 +42,7 @@ export class RentalComponent implements OnInit {
     private localStorageService: LocalStorageService) { }
 
   ngOnInit(): void {
+    this.getCustomers();
   
   }
 
@@ -84,7 +85,7 @@ export class RentalComponent implements OnInit {
     if (localStorage.getItem('token') && this.rentDate != undefined) {
       //@ts-ignore
       newRental = {
-        carId: this.carForRent.carId,
+        carId: this.carForRent.id,
         brandName: this.carForRent.brandName,
         colorName: this.carForRent.colorName,
         modelYear: this.carForRent.modelYear,

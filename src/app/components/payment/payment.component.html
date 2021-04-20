@@ -38,7 +38,7 @@
   <div class="col-lg-6">
     <div class="card">
       <div class="card-header fw-bold">
-        <i class="bi-credit-card me-1"></i> Kart bilgilerinizi doldurun
+        Kart bilgilerinizi doldurun
       </div>
       <div class="icons">
         <img src="https://img.icons8.com/color/48/000000/visa.png" />
@@ -47,30 +47,30 @@
         />
         <img src="https://img.icons8.com/color/48/000000/maestro.png" />
       </div>
-      <div *ngIf="paymentAddForm" class="card-body">
+       <div class="card-body"> 
        
         <form [formGroup]="paymentAddForm" (ngSubmit)="add()">
           <div class="form-floating mb-3">
-            <input type="text" id="nameOnTheCard" class="form-control" placeholder="nameOnTheCard"
+            <input type="text" id="nameOnTheCard" class="form-control" placeholder="nameOnTheCard" required
               formControlName="nameOnTheCard" />
             <label for="nameOnTheCard">Kart Üzerindeki İsim</label>
           </div>
           <div class="form-floating mb-3">
-            <input type="text" id="creditCardNumber" class="form-control" placeholder="creditCardNumber"
+            <input type="text" id="creditCardNumber" class="form-control" placeholder="creditCardNumber" required
               formControlName="creditCardNumber" />
             <label for="creditCardNumber">Kart Numarası</label>
           </div>
           <div class="row">
             <div class="col-lg-6">
               <div class="form-floating mb-3">
-                <input type="text" id="expirationDate" class="form-control" placeholder="expirationDate"
+                <input type="text" id="expirationDate" class="form-control" placeholder="expirationDate" required
                   formControlName="expirationDate" />
                 <label for="expirationDate">Son Kullanım Tarihi</label>
               </div>
             </div>
             <div class="col-lg-6">
               <div class="form-floating mb-3">
-                <input type="text" id="securityCode" class="form-control" placeholder="Cvv" formControlName="securityCode" />
+                <input type="text" id="securityCode" class="form-control" placeholder="Cvv" formControlName="securityCode"  required/>
                 <label for="securityCode">Güvenlik Kodu</label>
               </div>
             </div>
@@ -80,6 +80,9 @@
             <label class="form-check-label" for="save">
               Kart bilgilerimin kayıt edilmesini istiyorum.
             </label>
+          </div>
+          <div>
+            <td style="padding-top: 20px; font-size: 25px;"><b> Toplam tutar: {{ totalPrice | number: "1.0-0" }} TL</b></td>
           </div>
           <div class="text-end">
             <button class="btn btn-primary">
@@ -94,7 +97,7 @@
     <app-saved-card (selectedCard)="setSelectedCard($event)"></app-saved-card>
   </div>
 </div>
-</div>
+ </div> 
 <!-- <body class="bg">
   <br>
   <div class="container">

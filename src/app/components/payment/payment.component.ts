@@ -38,7 +38,11 @@ export class PaymentComponent implements OnInit {
   customerId: number;
   rental: Rental;
   fakeCreditCard: FakeCreditCard;
- 
+  totalPrice: number = 0;
+  totalDay: number = 0;
+  totalTime: number = 0;
+
+  
 
 
   constructor(
@@ -59,7 +63,7 @@ export class PaymentComponent implements OnInit {
       if (params['rental']) {
         this.createCardAddForm();
         this.rental = JSON.parse(params['rental']);
-         this.getCarDetails();
+         this.getCarDetails(1);
       }
     });
   }
@@ -73,6 +77,7 @@ export class PaymentComponent implements OnInit {
       save: [true],
     });
   }
+
 
   paymentCalculator() {
     if (this.rental.returnDate != null) {
@@ -91,6 +96,7 @@ export class PaymentComponent implements OnInit {
       }
     }
   }
+
   add() {
     if (this.paymentAddForm.invalid) {
       return this.toastrService.warning('Bilgilerinizi kontrol ediniz', 'Uyarı');
@@ -137,6 +143,21 @@ export class PaymentComponent implements OnInit {
       return;
     });
   }
+
+  calcTotalPrice() {
+    let price: number = this.car.dailyPrice;
+    this.totalTime =
+      new Date(this.rental.returnDate).getTime() -
+      new Date(this.rental.rentDate).getTime();
+
+    this.totalDay = Math.round(this.totalTime / (1000 * 3600 * 24));
+    if (this.totalPrice > 0) {
+      this.totalPrice = this.totalDay * price;
+    } else {
+      this.totalPrice = 1 * price;
+    }
+  }
+
 
   setSelectedCard(cardOnEventing: FakeCreditCard) {
     this.fakeCreditCard = Object.assign(cardOnEventing, { save: false });

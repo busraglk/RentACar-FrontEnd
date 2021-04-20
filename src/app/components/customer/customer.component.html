@@ -1,4 +1,4 @@
-<!-- <div *ngIf="dataLoaded == false" 
+<div *ngIf="dataLoaded == false" 
 class="spinner-border text-secondary" role="status">
     <span class="visually-hidden">Loading...</span>
 </div>
@@ -19,9 +19,9 @@ class="spinner-border text-secondary" role="status">
     <tbody>
     <tr *ngFor="let customer of customers"> 
         <td>{{customer.customerId}}</td>
-        <td>{{customer.customerName}}</td>
+        <td>{{customer.firstName}} {{customer.lastName}}</td>
         <td>{{customer.email}}</td>
         <td>{{customer.companyName}}</td>
     </tr>
 </tbody>
-</table> -->
+</table>

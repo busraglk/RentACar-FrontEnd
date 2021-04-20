@@ -59,9 +59,6 @@ const routes: Routes = [
   {path: 'customer',component:CustomerComponent},
   
 
-
-
-
 ];
 
 @NgModule({

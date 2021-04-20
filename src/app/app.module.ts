@@ -3,7 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ToastrModule } from 'ngx-toastr'
+import { ToastrModule } from 'ngx-toastr';
+import { DatePipe} from "@angular/common";
 
 import { JwtModule } from '@auth0/angular-jwt';
 import { AppRoutingModule } from './app-routing.module';
@@ -95,7 +96,8 @@ export function tokenGetter() {
     {provide: HTTP_INTERCEPTORS, 
       useClass:AuthInterceptor,
       multi:true
-    }
+    },
+    DatePipe
   ],
   bootstrap: [AppComponent]
 })
