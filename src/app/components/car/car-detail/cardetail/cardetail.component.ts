@@ -25,22 +25,12 @@ export class CardetailComponent implements OnInit {
   dataLoaded: false;
   customers: Customer[] = [];
   customerId: number;
-  rental: Rental[];
+  rental: Rental;
 
-  firstName: string;
-  lastName: string;
-  companyName: string;
-
-  carId: number;
-  carBrandName: string;
-  carDescription: string;
-  carDailyPrice: number;
-  amountPaye: number = 0;
-
-  rentDate!: Date;
-  returnDate!: Date;
-  totalPrice: number;
+  rentDate: Date;
+  returnDate: Date;
   formControl: boolean = false;
+ 
 
   imageUrl = 'https://localhost:44348/';
 
@@ -85,7 +75,6 @@ export class CardetailComponent implements OnInit {
      this.images=response.data;
     })    
   }
-
   getSliderClassName(index:Number){
     if(index == 0){
       return "carousel-item active";
