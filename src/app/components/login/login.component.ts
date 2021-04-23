@@ -42,9 +42,11 @@ export class LoginComponent implements OnInit {
       let loginModel = Object.assign({}, this.loginForm.value)
 
       this.authService.login(loginModel).subscribe(response=>{
+        this. getCustomerByEmail(loginModel.email);
         console.log(response);
         this.localStorageService.setToken("token",response?.data?.token);
         this.localStorageService.setToken("email",loginModel.email);
+        
          this.toastrService.success(response.message,"Başarılı");
          this.router.navigate(["/cars"])
          setTimeout(function () {

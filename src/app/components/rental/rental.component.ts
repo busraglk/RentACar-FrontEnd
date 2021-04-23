@@ -29,6 +29,7 @@ export class RentalComponent implements OnInit {
   maxDate: string | null;
   maxMinDate: string | null;
   firstDateSelected: boolean = false;
+  currentCustomer:string = "currentCustomer";
  
   @Input() carForRent:Car;
 
@@ -93,13 +94,11 @@ export class RentalComponent implements OnInit {
         description: this.carForRent.description,
         rentDate: this.rentDate,
         returnDate: this.returnDate,
-        customerId: this.localStorageService.getCurrentCustomer().customerId
+        customerId: this.getCurrentCustomer().customerId
       };
-      this.toastrService.info(
-        'Ödeme sayfasına yönlendiriliyorsunuz.',
-        'Ödeme İşlemleri'
-      );
+      this.toastrService.info('Ödeme sayfasına yönlendiriliyorsunuz.','Ödeme İşlemleri');
       this.router.navigate(['/payment/', JSON.stringify(newRental)]);
+      
     } else if (!localStorage.getItem('token')) {
       this.toastrService.info('Arabayı kiralayabilmek için önce giriş yapın.');
       this.router.navigate(['login']);
@@ -123,4 +122,18 @@ export class RentalComponent implements OnInit {
     })
   }
 
+  getCurrentCustomer(){
+    let customer:Customer = JSON.parse(localStorage.getItem(this.currentCustomer));
+    let newCustomer:Customer = {
+      customerId:customer.customerId,
+      userId:customer.userId,
+      companyName:customer.companyName,
+      firstName:customer.firstName,
+      lastName:customer.lastName,
+      email:customer.email,
+      status:customer.status,
+      findexPoint:customer.findexPoint
+    }
+    return newCustomer;
+  }
 }

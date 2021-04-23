@@ -12,8 +12,7 @@ export class CreditCardService {
   apiUrl = "https://localhost:44348/api/";
   
   constructor( private httpClient:HttpClient) { }
-
-
+  
   getCardsByUserId(userId:number):Observable<ListResponseModel<CreditCard>>{
     let newPath = this.apiUrl + "creditcards/getcardsbyuserid?userId=" + userId;
     return this.httpClient.get<ListResponseModel<CreditCard>>(newPath);

@@ -49,7 +49,7 @@
       </div>
        <div class="card-body"> 
        
-        <form [formGroup]="paymentAddForm" (ngSubmit)="add()">
+        <form [formGroup]="paymentAddForm">
           <div class="form-floating mb-3">
             <input type="text" id="nameOnTheCard" class="form-control" placeholder="nameOnTheCard" required
               formControlName="nameOnTheCard" />
@@ -70,7 +70,8 @@
             </div>
             <div class="col-lg-6">
               <div class="form-floating mb-3">
-                <input type="text" id="securityCode" class="form-control" placeholder="Cvv" formControlName="securityCode"  required/>
+                <input type="text" id="securityCode" class="form-control" placeholder="***" 
+                formControlName="securityCode"  required/>
                 <label for="securityCode">Güvenlik Kodu</label>
               </div>
             </div>
@@ -82,11 +83,11 @@
             </label>
           </div>
           <div>
-            <td style="padding-top: 20px; font-size: 25px;"><b> Toplam tutar: {{ totalPrice | number: "1.0-0" }} TL</b></td>
+            <td style="padding-top: 20px; font-size: 25px;"><b> Toplam tutar: {{ amountOfPayment | number: "1.0-0" }} TL</b></td>
           </div>
           <div class="text-end">
-            <button class="btn btn-primary">
-              <i class="bi-credit-card-2-back me-1"></i> Ödeme Yap
+            <button class="btn btn-primary" (click)="addCard()">
+              Ödeme Yap
             </button>
           </div>
         </form>

@@ -1,7 +1,6 @@
 import { Component,EventEmitter, OnInit, Output } from '@angular/core';
 import { CreditCard } from 'src/app/models/creditCard';
 import { Customer } from 'src/app/models/customer';
-import { FakeCreditCard } from 'src/app/models/fakeCreditCard';
 import { CreditCardService } from 'src/app/services/credit-card.service';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 
@@ -13,9 +12,9 @@ import { LocalStorageService } from 'src/app/services/local-storage.service';
 export class SavedCardComponent implements OnInit {
 
   
-  cards:FakeCreditCard[];
+  cards:CreditCard[];
   currentCustomer:Customer;
-  @Output() selectedCard : EventEmitter<FakeCreditCard> = new EventEmitter<FakeCreditCard>();
+  @Output() selectedCard : EventEmitter<CreditCard> = new EventEmitter<CreditCard>();
   
   constructor(private creditCardService:CreditCardService,
     private localStorageService:LocalStorageService) { }

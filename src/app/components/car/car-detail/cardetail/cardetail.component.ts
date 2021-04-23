@@ -37,11 +37,7 @@ export class CardetailComponent implements OnInit {
   constructor(private carService: CarService,  
     private activatedRoute:ActivatedRoute,
     private carImageService:CarImageService,
-    private authService:AuthService,
-    private toastrService: ToastrService,
-    private rentalService: RentalService,
-    private router: Router,
-    private paymentService: PaymentService) { }
+    private authService:AuthService) { }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
@@ -52,11 +48,6 @@ export class CardetailComponent implements OnInit {
     })
   }
 
-  getMinDate(){
-    var today  = new Date();
-    today.setDate(today.getDate() + 1);
-    return today.toISOString().slice(0,10)
-  }
   isAuthenticate():boolean{
     return this.authService.isAuthenticated();
   }

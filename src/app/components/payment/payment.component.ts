@@ -12,8 +12,7 @@ import { PaymentService } from 'src/app/services/payment.service';
 import { RentalService } from 'src/app/services/rental.service';
 import { CreditCard } from 'src/app/models/creditCard';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
-import { FakeCreditCard } from 'src/app/models/fakeCreditCard';
-import { FakeCreditCardService } from 'src/app/services/fake-credit-card.service';
+import { CreditCardService } from 'src/app/services/credit-card.service';
 
 
 @Component({
@@ -37,14 +36,12 @@ export class PaymentComponent implements OnInit {
   paymentAddForm: FormGroup;
   customerId: number;
   rental: Rental;
-  fakeCreditCard: FakeCreditCard;
+  fakeCreditCard: CreditCard;
   totalPrice: number = 0;
   totalDay: number = 0;
   totalTime: number = 0;
 
   
-
-
   constructor(
     private formBuilder: FormBuilder,
     private paymentService: PaymentService,
@@ -55,7 +52,7 @@ export class PaymentComponent implements OnInit {
     private activateRoute: ActivatedRoute,
     private router: Router,
     private localStorageService: LocalStorageService,
-    private fakeCreditCardService : FakeCreditCardService,
+    private creditCardService : CreditCardService,
   ) {}
 
   ngOnInit(): void {
@@ -63,7 +60,7 @@ export class PaymentComponent implements OnInit {
       if (params['rental']) {
         this.createCardAddForm();
         this.rental = JSON.parse(params['rental']);
-         this.getCarDetails(1);
+        this.getCarDetails(this.rental.carId);
       }
     });
   }
@@ -127,39 +124,28 @@ export class PaymentComponent implements OnInit {
     });
   }
 
-  addCard(card: FakeCreditCard) {
-    this.fakeCreditCardService.add(card).subscribe(responseSuccess => {
-      return responseSuccess.success
+  addCard() {
+    let cardModel = Object.assign({}, this.paymentAddForm.value);
+
+    this.creditCardService.add(cardModel).subscribe(responseSuccess => {
+      this.toastrService.info("Success", responseSuccess.message)
+      this.addRental(this.rental);
     }, responseError => {
+      console.log(responseError)
+      this.toastrService.error(responseError.error.message, "Error");
       if (responseError.error.ValidationErrors.length > 0) {
         for (let i = 0; i < responseError.error.ValidationErrors.length; i++) {
           this.toastrService.error(
             responseError.error.ValidationErrors[i].ErrorMessage, 'Doğrulama Hatası'
-          );
+          ); 
         }
-        return;
       }
       this.toastrService.error(responseError.error.Message, responseError.error.StatusCode);
-      return;
     });
+    
   }
 
-  calcTotalPrice() {
-    let price: number = this.car.dailyPrice;
-    this.totalTime =
-      new Date(this.rental.returnDate).getTime() -
-      new Date(this.rental.rentDate).getTime();
-
-    this.totalDay = Math.round(this.totalTime / (1000 * 3600 * 24));
-    if (this.totalPrice > 0) {
-      this.totalPrice = this.totalDay * price;
-    } else {
-      this.totalPrice = 1 * price;
-    }
-  }
-
-
-  setSelectedCard(cardOnEventing: FakeCreditCard) {
+  setSelectedCard(cardOnEventing: CreditCard) {
     this.fakeCreditCard = Object.assign(cardOnEventing, { save: false });
     this.paymentAddForm.setValue(this.fakeCreditCard);
   }
@@ -171,11 +157,5 @@ export class PaymentComponent implements OnInit {
         this.car = response.data[0];
         this.paymentCalculator();
       });
-  }
-
-  getCustomers() {
-    this.customerService.getCustomers().subscribe((response) => {
-      this.customers = response.data;
-    });
   }
 }
